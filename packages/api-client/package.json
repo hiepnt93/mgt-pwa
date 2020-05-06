@@ -1,0 +1,32 @@
+{
+  "name": "@mgt-pwa/api-client",
+  "version": "0.1.0",
+  "description": "Rest API client for Shopware 6.",
+  "main": "dist/api-client.cjs.js",
+  "module": "dist/api-client.esm-bundler.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/api-client.d.ts",
+  "unpkg": "dist/api-client.global.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DivanteLtd/shopware-pwa"
+  },
+  "buildOptions": {
+    "name": "ApiClient",
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
+  },
+  "peerDependencies": {
+    "axios": "^0.19.2",
+    "https": "^1.0.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
