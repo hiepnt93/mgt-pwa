@@ -121,47 +121,43 @@
 </template>
 
 <script>
-import { computed } from '@vue/composition-api'
-import { SfAlert, SfInput, SfButton, SfSelect } from '@storefront-ui/vue'
-import { validationMixin } from 'vuelidate'
-import { required, email, minLength } from 'vuelidate/lib/validators'
+import { computed } from "@vue/composition-api";
+import { SfAlert, SfInput, SfButton, SfSelect } from "@storefront-ui/vue";
+import { validationMixin } from "vuelidate";
+import { required, email, minLength } from "vuelidate/lib/validators";
 import {
   useUser,
   useCountries,
   useSalutations
-} from '@shopware-pwa/composables'
-import { mapCountries, mapSalutations } from '@shopware-pwa/helpers'
+} from "@mgt-pwa/composables";
+import { mapCountries, mapSalutations } from "@shopware-pwa/helpers";
 
 export default {
-  name: 'SwResetPassword',
+  name: "SwResetPassword",
   components: { SfButton, SfInput, SfAlert, SfSelect },
   mixins: [validationMixin],
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
       salutation: null,
       country: null,
-      street: '',
-      city: '',
-      zipcode: ''
-    }
+      street: "",
+      city: "",
+      zipcode: ""
+    };
   },
   setup() {
-    const { login, register, loading, error: userError } = useUser()
-    const {
-      getCountries,
-      error: countriesError
-    } = useCountries()
-    const {
-      getSalutations,
-      error: salutationsError
-    } = useSalutations()
+    const { login, register, loading, error: userError } = useUser();
+    const { getCountries, error: countriesError } = useCountries();
+    const { getSalutations, error: salutationsError } = useSalutations();
 
-    const getMappedCountries = computed(() => mapCountries(getCountries.value))
-    const getMappedSalutations = computed(() => mapSalutations(getSalutations.value))
+    const getMappedCountries = computed(() => mapCountries(getCountries.value));
+    const getMappedSalutations = computed(() =>
+      mapSalutations(getSalutations.value)
+    );
 
     return {
       clientLogin: login,
@@ -172,7 +168,7 @@ export default {
       getMappedCountries,
       salutationsError,
       getMappedSalutations
-    }
+    };
   },
   computed: {
     mapCustomerInformations() {
@@ -191,15 +187,15 @@ export default {
           zipcode: this.zipcode,
           countryId: this.country.id
         }
-      }
+      };
     },
     getErrorMessage() {
       if (this.userError)
-        return 'Cannot create a new account, the user may already exist'
+        return "Cannot create a new account, the user may already exist";
       if (this.salutationsError)
-        return "Couldn't fetch available salutations, please contact the administration."
+        return "Couldn't fetch available salutations, please contact the administration.";
       if (this.countriesError)
-        return "Couldn't fetch available countries, please contact the administration."
+        return "Couldn't fetch available countries, please contact the administration.";
     }
   },
   validations: {
@@ -235,27 +231,27 @@ export default {
   },
   methods: {
     async invokeRegister() {
-      this.$v.$touch()
+      this.$v.$touch();
       if (this.$v.$invalid) {
-        return
+        return;
       }
       const registeredIn = await this.clientRegister(
         this.mapCustomerInformations
-      )
+      );
       if (registeredIn) {
         await this.clientLogin({
           username: this.email,
           password: this.password
-        })
-        this.$emit('success')
+        });
+        this.$emit("success");
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~@storefront-ui/vue/styles';
+@import "~@storefront-ui/vue/styles";
 
 @mixin for-desktop {
   @media screen and (min-width: 900px) {

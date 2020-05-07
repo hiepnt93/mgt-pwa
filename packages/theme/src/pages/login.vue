@@ -1,40 +1,36 @@
 <template>
   <div id="login" :key="$route.fullPath">
-    <SfHeading
-      class="login__header desktop-only"
-      :level="3"
-      title="Log in"
-    />
+    <SfHeading class="login__header desktop-only" :level="3" title="Log in" />
     <SwLogin class="login__component" @success="redirectToMyAccount" />
   </div>
 </template>
 <script>
-import { SfHeading } from '@storefront-ui/vue'
+import { SfHeading } from "@storefront-ui/vue";
 
-import SwLogin from '@shopware-pwa/default-theme/components/SwLogin'
-import { PAGE_ACCOUNT } from '@shopware-pwa/default-theme/helpers/pages'
-import authMiddleware from '@shopware-pwa/default-theme/middleware/auth'
+import SwLogin from "@shopware-pwa/default-theme/components/SwLogin";
+import { PAGE_ACCOUNT } from "@shopware-pwa/default-theme/helpers/pages";
+import authMiddleware from "@shopware-pwa/default-theme/middleware/auth";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
     SwLogin,
-    SfHeading,
+    SfHeading
   },
   middleware: authMiddleware,
   data() {
-    return {}
+    return {};
   },
   computed: {},
   methods: {
     redirectToMyAccount() {
-      this.$router.push(PAGE_ACCOUNT)
-    },
-  },
-}
+      this.$router.push(PAGE_ACCOUNT);
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
-@import '~@storefront-ui/vue/styles.scss';
+@import "~@storefront-ui/vue/styles.scss";
 #login {
   height: 65vh;
   margin-bottom: 10vh;

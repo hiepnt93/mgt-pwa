@@ -7,7 +7,7 @@
 import CmsPage from "sw-cms/CmsPage";
 
 export default {
-  name: 'CategoryView',
+  name: "CategoryView",
   components: {
     CmsPage
   },
@@ -17,7 +17,6 @@ export default {
       default: () => ({})
     }
   }
-}
+};
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

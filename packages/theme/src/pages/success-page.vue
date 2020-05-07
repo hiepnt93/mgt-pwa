@@ -1,6 +1,11 @@
 <template>
   <div class="success-page" :key="$route.fullPath">
-    <SfHeading level=2 title="Thank you" subtitle="for shopping with us!" class="success-page__heading" />
+    <SfHeading
+      level="2"
+      title="Thank you"
+      subtitle="for shopping with us!"
+      class="success-page__heading"
+    />
     <SfButton @click="$router.push('/')">
       <SfIcon icon="chevron_left" color="white" size="20px" />Return to homepage
     </SfButton>
@@ -12,18 +17,17 @@ import { SfButton, SfHeading, SfIcon } from "@storefront-ui/vue";
 export default {
   name: "SuccessPage",
   data() {
-    return {
-    }
+    return {};
   },
   components: {
     SfHeading,
     SfButton,
-    SfIcon,
-  },
+    SfIcon
+  }
 };
 </script>
 <style lang="scss">
-@import '~@storefront-ui/vue/styles.scss';
+@import "~@storefront-ui/vue/styles.scss";
 
 .success-page {
   height: 100%;

@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import { SfBreadcrumbs } from '@storefront-ui/vue'
-import TopNavigation from '@shopware-pwa/default-theme/components/TopNavigation'
-import SwBottomNavigation from '@shopware-pwa/default-theme/components/SwBottomNavigation'
-import SwCart from '@shopware-pwa/default-theme/components/SwCart'
-import SwFooter from '@shopware-pwa/default-theme/components/SwFooter'
-import SwPluginTopNavigation from 'sw-plugins/SwPluginTopNavigation'
+import { SfBreadcrumbs } from "@storefront-ui/vue";
+import TopNavigation from "@shopware-pwa/default-theme/components/TopNavigation";
+import SwBottomNavigation from "@shopware-pwa/default-theme/components/SwBottomNavigation";
+import SwCart from "@shopware-pwa/default-theme/components/SwCart";
+import SwFooter from "@shopware-pwa/default-theme/components/SwFooter";
+import SwPluginTopNavigation from "sw-plugins/SwPluginTopNavigation";
 
 export default {
   components: {
@@ -30,7 +30,7 @@ export default {
     SwCart,
     SwFooter,
     SwBottomNavigation,
-    SwPluginTopNavigation,
+    SwPluginTopNavigation
   },
   computed: {
     componentBreadcrumbs() {
@@ -41,10 +41,10 @@ export default {
             return (
               r.components.default.options.data &&
               r.components.default.options.data().breadcrumbs
-            )
+            );
           })
           .shift() || {}
-      )
+      );
     },
     getBreadcrumbs() {
       return Object.keys(this.componentBreadcrumbs)
@@ -52,21 +52,21 @@ export default {
         .map((breadcrumb) => ({
           text: breadcrumb.name,
           route: {
-            link: breadcrumb.path,
-          },
-        }))
-    },
+            link: breadcrumb.path
+          }
+        }));
+    }
   },
   methods: {
     redirectTo(route) {
-      return this.$router.push(route.link)
-    },
-  },
-}
+      return this.$router.push(route.link);
+    }
+  }
+};
 </script>
 
 <style lang="scss">
-@import '~@storefront-ui/vue/styles';
+@import "~@storefront-ui/vue/styles";
 
 html {
   overflow-x: hidden;

@@ -1,7 +1,7 @@
 {
   "name": "@mgt-pwa/api-client",
   "version": "0.1.0",
-  "description": "Rest API client for Shopware 6.",
+  "description": "Rest API client.",
   "main": "dist/api-client.cjs.js",
   "module": "dist/api-client.esm-bundler.js",
   "files": [
@@ -12,7 +12,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DivanteLtd/shopware-pwa"
+    "url": "git+https://github.com/hiepnt93/mgt-pwa"
   },
   "buildOptions": {
     "name": "ApiClient",
@@ -23,7 +23,15 @@
   },
   "peerDependencies": {
     "axios": "^0.19.2",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link": "^1.2.13",
+    "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "isomorphic-fetch": "^2.2.1"
   },
   "license": "MIT",
   "publishConfig": {

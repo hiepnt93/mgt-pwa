@@ -40,28 +40,28 @@
 </template>
 
 <script>
-import { SfInput, SfButton, SfAlert } from '@storefront-ui/vue'
-import { validationMixin } from 'vuelidate'
-import { required, email } from 'vuelidate/lib/validators'
-import { useUser } from '@shopware-pwa/composables'
+import { SfInput, SfButton, SfAlert } from "@storefront-ui/vue";
+import { validationMixin } from "vuelidate";
+import { required, email } from "vuelidate/lib/validators";
+import { useUser } from "@mgt-pwa/composables";
 
 export default {
-  name: 'SwLogin',
+  name: "SwLogin",
   components: { SfButton, SfInput, SfAlert },
   mixins: [validationMixin],
   data() {
     return {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: ""
+    };
   },
   setup() {
-    const { login, loading, error: userError } = useUser()
+    const { login, loading, error: userError } = useUser();
     return {
       clientLogin: login,
       isLoading: loading,
       userError
-    }
+    };
   },
   validations: {
     email: {
@@ -74,22 +74,22 @@ export default {
   },
   methods: {
     async invokeLogin() {
-      this.$v.$touch()
+      this.$v.$touch();
       if (this.$v.$invalid) {
-        return
+        return;
       }
       const loggedIn = await this.clientLogin({
         username: this.email,
         password: this.password
-      })
-      if (loggedIn) this.$emit('success')
+      });
+      if (loggedIn) this.$emit("success");
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~@storefront-ui/vue/styles';
+@import "~@storefront-ui/vue/styles";
 
 .sw-login {
   &__alert {

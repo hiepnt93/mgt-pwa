@@ -57,61 +57,61 @@ import {
   SfCircleIcon,
   SfIcon,
   SfSelect,
-  SfProductOption,
-} from '@storefront-ui/vue'
+  SfProductOption
+} from "@storefront-ui/vue";
 import {
   useCartSidebar,
   useNavigation,
   useUser,
-  useUserLoginModal,
-} from '@shopware-pwa/composables'
-import { PAGE_ACCOUNT } from '../helpers/pages'
-import SwCurrency from '@shopware-pwa/default-theme/components/SwCurrency'
+  useUserLoginModal
+} from "@shopware-pwa/composables";
+import { PAGE_ACCOUNT } from "../helpers/pages";
+import SwCurrency from "@shopware-pwa/default-theme/components/SwCurrency";
 
 export default {
-  name: 'SwBottomNavigation',
+  name: "SwBottomNavigation",
   components: {
     SfBottomNavigation,
     SfIcon,
     SfCircleIcon,
     SfSelect,
     SfProductOption,
-    SwCurrency,
+    SwCurrency
   },
   data() {
     return {
       navigationElements: [],
-      currentRoute: { routeLabel: '', routePath: '/' },
-    }
+      currentRoute: { routeLabel: "", routePath: "/" }
+    };
   },
   setup() {
-    const { toggleSidebar, isSidebarOpen } = useCartSidebar()
-    const { routes } = useNavigation()
-    const { toggleModal } = useUserLoginModal()
-    const { isLoggedIn } = useUser()
+    const { toggleSidebar, isSidebarOpen } = useCartSidebar();
+    const { routes } = useNavigation();
+    const { toggleModal } = useUserLoginModal();
+    const { isLoggedIn } = useUser();
     return {
       isLoggedIn,
       routes,
       isSidebarOpen,
       toggleSidebar,
-      toggleModal,
-    }
+      toggleModal
+    };
   },
   watch: {
     currentRoute(nextRoute) {
-      this.$router.push(nextRoute.routeLabel)
-    },
+      this.$router.push(nextRoute.routeLabel);
+    }
   },
   methods: {
     userIconClick() {
       if (this.isLoggedIn) {
-        this.$router.push(PAGE_ACCOUNT)
-        return
+        this.$router.push(PAGE_ACCOUNT);
+        return;
       }
-      this.toggleModal()
-    },
-  },
-}
+      this.toggleModal();
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .sw-bottom-navigation {

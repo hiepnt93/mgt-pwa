@@ -2,7 +2,7 @@
   <div class="error-page">
     <SfImage
       class="error-page__image"
-      :src="require('@shopware-pwa/default-theme/assets/error.svg')"
+      :src="require('@mgt-pwa/default-theme/assets/error.svg')"
     />
     <SfHeading
       class="error-page__heading"
@@ -29,47 +29,47 @@
   </div>
 </template>
 <script>
-import { SfHeading, SfButton, SfIcon, SfImage } from '@storefront-ui/vue'
+import { SfHeading, SfButton, SfIcon, SfImage } from "@storefront-ui/vue";
 
 const customMessageDictionary = {
   404: "We can't find what you are looking for. Are you lost?",
-  408: 'The API is taking to long to respond',
-  500: 'Oops, something went terribly wrong :(',
+  408: "The API is taking to long to respond",
+  500: "Oops, something went terribly wrong :(",
   502: "Server couldn't complete your request. Please try again in few seconds.",
-  503: 'Server is really busy right now',
-}
+  503: "Server is really busy right now"
+};
 
-const getMessageForCode = (code) => customMessageDictionary[code]
+const getMessageForCode = (code) => customMessageDictionary[code];
 
 export default {
-  name: 'ErrorPage',
+  name: "ErrorPage",
   components: {
     SfHeading,
     SfButton,
     SfImage,
-    SfIcon,
+    SfIcon
   },
   props: {
     error: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
   data() {
-    return {}
+    return {};
   },
   computed: {
     code() {
-      return this.error.statusCode
+      return this.error.statusCode;
     },
     message() {
-      return getMessageForCode(this.code) || this.error.message
-    },
-  },
-}
+      return getMessageForCode(this.code) || this.error.message;
+    }
+  }
+};
 </script>
 <style lang="scss">
-@import '~@storefront-ui/vue/styles.scss';
+@import "~@storefront-ui/vue/styles.scss";
 .error-page {
   box-sizing: border-box;
   text-align: center;

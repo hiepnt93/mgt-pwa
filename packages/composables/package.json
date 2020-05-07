@@ -12,7 +12,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DivanteLtd/shopware-pwa"
+    "url": "git+https://github.com/hiepnt93/mgt-pwa"
   },
   "buildOptions": {
     "name": "composables",

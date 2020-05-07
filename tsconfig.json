@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "sourceMap": false,
+    "target": "es2019",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "declaration": true,
+    "declarationMap": true,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["jest", "node"],
+    "rootDir": ".",
+    "paths": {
+      // "@shopware-pwa/shopware-6-client": ["packages/shopware-6-client/src"],
+      // "@shopware-pwa/composables": ["packages/composables/src"],
+      // "@shopware-pwa/helpers": ["packages/helpers/src"],
+      // "@shopware-pwa/commons": ["packages/commons"],
+      // "@shopware-pwa/nuxt-module": ["packages/nuxt-module/src"]
+    },
+    "preserveSymlinks": true
+  },
+  "include": [
+    "packages/global.d.ts",
+    "packages/*/src",
+    "packages/*/__tests__",
+    "node_modules/@mgt-pwa"
+  ]
+}

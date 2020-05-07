@@ -1,0 +1,12 @@
+{
+  "name": "@mgt-pwa/core",
+  "version": "0.1.0",
+  "description": "@mgt-pwa/core",
+  "license": "MIT",
+  "files": [
+    "src/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

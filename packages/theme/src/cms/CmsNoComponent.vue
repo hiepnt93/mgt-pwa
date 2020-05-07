@@ -12,33 +12,32 @@
 </template>
 
 <script>
-import { SfAlert } from '@storefront-ui/vue'
+import { SfAlert } from "@storefront-ui/vue";
 
 export default {
   components: {
-    SfAlert,
+    SfAlert
   },
-  name: 'CmsNoComponent',
+  name: "CmsNoComponent",
   data() {
-    return {}
+    return {};
   },
   props: {
     content: {
       type: Object,
-      default: null,
-    },
+      default: null
+    }
   },
   computed: {
     elementType() {
-      if (this.content.pageId) return 'Section'
-      return this.content.sectionId ? `Block` : `Slot`
+      if (this.content.pageId) return "Section";
+      return this.content.sectionId ? `Block` : `Slot`;
     },
     getElementType() {
-      return this.content ? this.content.type : ''
-    },
-  },
-}
+      return this.content ? this.content.type : "";
+    }
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

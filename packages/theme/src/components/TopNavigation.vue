@@ -12,14 +12,14 @@
       </template>
     </SfTopBar>
     <SfHeader
-      title="Shopware-PWA"
+      title="Home"
       :has-mobile-search="false"
       :is-sticky="false"
       :cart-items-qty="count.toString()"
     >
       <template #logo>
         <nuxt-link to="/" class="sf-header__logo">
-          <SfImage src="/img/logo.svg" alt="Shopware PWA" />
+          <SfImage src="/img/logo.svg" alt="Home" />
         </nuxt-link>
       </template>
       <template #navigation>
@@ -33,7 +33,7 @@
               :style="{
                 display: 'flex',
                 alignItems: 'center',
-                height: '100%',
+                height: '100%'
               }"
             >
               {{ routeLabel }}
@@ -57,7 +57,7 @@
               :icon="accountIcon"
               class="sf-header__icon"
               :class="{
-                'sf-header__icon--is-active': activeIcon === 'account-icon',
+                'sf-header__icon--is-active': activeIcon === 'account-icon'
               }"
               role="button"
               aria-label="Go to My Account"
@@ -72,7 +72,7 @@
               :badge-label="count.toString()"
               class="sf-header__icon"
               :class="{
-                'sf-header__icon--is-active': activeIcon === 'cart-icon',
+                'sf-header__icon--is-active': activeIcon === 'cart-icon'
               }"
               role="button"
               aria-label="Go to cart"
@@ -96,19 +96,19 @@ import {
   SfIcon,
   SfImage,
   SfTopBar,
-  SfSearchBar,
-} from '@storefront-ui/vue'
+  SfSearchBar
+} from "@storefront-ui/vue";
 import {
   useUser,
   useCart,
   useCartSidebar,
   useUserLoginModal,
   useNavigation,
-  useProductSearch,
-} from '@shopware-pwa/composables'
-import SwLoginModal from '@shopware-pwa/default-theme/components/modals/SwLoginModal'
-import SwCurrency from '@shopware-pwa/default-theme/components/SwCurrency'
-import { PAGE_ACCOUNT } from '@shopware-pwa/default-theme/helpers/pages'
+  useProductSearch
+} from "@shopware-pwa/composables";
+import SwLoginModal from "@shopware-pwa/default-theme/components/modals/SwLoginModal";
+import SwCurrency from "@shopware-pwa/default-theme/components/SwCurrency";
+import { PAGE_ACCOUNT } from "@shopware-pwa/default-theme/helpers/pages";
 
 export default {
   components: {
@@ -118,15 +118,15 @@ export default {
     SfImage,
     SfTopBar,
     SfSearchBar,
-    SwCurrency,
+    SwCurrency
   },
   setup() {
-    const { routes, fetchRoutes } = useNavigation()
-    const { isLoggedIn, logout } = useUser()
-    const { count } = useCart()
-    const { toggleSidebar } = useCartSidebar()
-    const { toggleModal } = useUserLoginModal()
-    const { search: fulltextSearch } = useProductSearch()
+    const { routes, fetchRoutes } = useNavigation();
+    const { isLoggedIn, logout } = useUser();
+    const { count } = useCart();
+    const { toggleSidebar } = useCartSidebar();
+    const { toggleModal } = useUserLoginModal();
+    const { search: fulltextSearch } = useProductSearch();
 
     return {
       routes,
@@ -136,31 +136,31 @@ export default {
       toggleSidebar,
       isLoggedIn,
       logout,
-      fulltextSearch,
-    }
+      fulltextSearch
+    };
   },
   data() {
     return {
-      navigationElements: [{ name: '' }],
-      activeSidebar: 'account',
-      activeIcon: '',
-      isModalOpen: false,
-    }
+      navigationElements: [{ name: "" }],
+      activeSidebar: "account",
+      activeIcon: "",
+      isModalOpen: false
+    };
   },
   async mounted() {
-    await this.fetchRoutes({ depth: 1 })
+    await this.fetchRoutes({ depth: 1 });
   },
   methods: {
     userIconClick() {
-      if (this.isLoggedIn) this.$router.push(PAGE_ACCOUNT)
-      else this.toggleModal()
-    },
-  },
-}
+      if (this.isLoggedIn) this.$router.push(PAGE_ACCOUNT);
+      else this.toggleModal();
+    }
+  }
+};
 </script>
 
 <style lang="scss">
-@import '~@storefront-ui/vue/styles.scss';
+@import "~@storefront-ui/vue/styles.scss";
 
 .top-navigation {
   --search-bar-width: 100%;
@@ -174,7 +174,7 @@ export default {
       --select-padding: var(--spacer-xs);
       --select-dropdown-z-index: 2;
       &::before {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         background-color: white;

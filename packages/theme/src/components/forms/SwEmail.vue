@@ -23,7 +23,7 @@
             type="email"
             name="email"
             label="Your new e-mail"
-            class="form__element "
+            class="form__element"
             required
             @blur="$v.email.$touch()"
           />
@@ -63,35 +63,37 @@
 </template>
 
 <script>
-import { validationMixin } from 'vuelidate'
-import { required, email, sameAs } from 'vuelidate/lib/validators'
-import { computed } from '@vue/composition-api';
-import { SfInput, SfButton, SfAlert } from '@storefront-ui/vue'
-import { useUser } from '@shopware-pwa/composables'
-import { getMessagesFromErrorsArray } from '@shopware-pwa/helpers'
+import { validationMixin } from "vuelidate";
+import { required, email, sameAs } from "vuelidate/lib/validators";
+import { computed } from "@vue/composition-api";
+import { SfInput, SfButton, SfAlert } from "@storefront-ui/vue";
+import { useUser } from "@shopware-pwa/composables";
+import { getMessagesFromErrorsArray } from "@shopware-pwa/helpers";
 
 export default {
-  name: 'EmailChange',
+  name: "EmailChange",
   components: { SfInput, SfButton, SfAlert },
   mixins: [validationMixin],
   props: {},
   setup() {
-    const { user, error: userError, updateEmail, refreshUser } = useUser()
-    const userErrorMessages = computed(() => getMessagesFromErrorsArray(userError.value.message))
+    const { user, error: userError, updateEmail, refreshUser } = useUser();
+    const userErrorMessages = computed(() =>
+      getMessagesFromErrorsArray(userError.value.message)
+    );
 
     return {
       refreshUser,
       updateEmail,
       user,
       userErrorMessages
-    }
+    };
   },
   data() {
     return {
-      email: '',
-      emailConfirmation: '',
-      password: ''
-    }
+      email: "",
+      emailConfirmation: "",
+      password: ""
+    };
   },
   methods: {
     async invokeUpdate() {
@@ -99,8 +101,8 @@ export default {
         email: this.email,
         emailConfirmation: this.confirmEmail,
         password: this.password
-      })
-      await this.refreshUser()
+      });
+      await this.refreshUser();
     }
   },
   validations: {
@@ -110,18 +112,18 @@ export default {
     },
     emailConfirmation: {
       required,
-      sameAsEmail: sameAs('email'),
+      sameAsEmail: sameAs("email"),
       email
     },
     password: {
       required
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~@storefront-ui/vue/styles.scss';
+@import "~@storefront-ui/vue/styles.scss";
 
 .sw-email {
   &__alert {

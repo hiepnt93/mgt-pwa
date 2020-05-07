@@ -1,40 +1,39 @@
 <template>
   <div class="sw-footer">
     <slot class="sw-footer__content" name="content" v-bind="column">
-        <div class="content sw-footer__signature">
-          Made with ❤️ by shopware AG & Vue Storefront
-        </div>
+      <div class="content sw-footer__signature">
+          Footer
+      </div>
     </slot>
   </div>
 </template>
 
 <script>
-import { SfFooter } from '@storefront-ui/vue'
+import { SfFooter } from "@storefront-ui/vue";
 
 export default {
   components: {
     SfFooter
   },
-  name: 'SwFooter',
+  name: "SwFooter",
   props: {
     column: {
       type: Number,
       default: 4
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 @import "~@storefront-ui/vue/styles.scss";
 
-
-.sw-footer{
+.sw-footer {
   width: 100%;
   height: auto;
   display: flex;
   margin-top: 1em;
-  
+
   @include for-desktop {
     margin-top: 2em;
     margin-bottom: 0;
@@ -46,7 +45,7 @@ export default {
     padding: 2em;
     width: 100%;
     text-align: center;
-    margin-bottom: 6em; 
+    margin-bottom: 6em;
     @include for-desktop {
       margin-bottom: 0;
     }

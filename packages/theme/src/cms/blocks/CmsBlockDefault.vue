@@ -7,32 +7,32 @@
 </template>
 
 <script>
-import CmsGenericElement from 'sw-cms/CmsGenericElement'
+import CmsGenericElement from "sw-cms/CmsGenericElement";
 
 export default {
   components: {
-    CmsGenericElement,
+    CmsGenericElement
   },
-  name: 'CmsBlockDefault',
+  name: "CmsBlockDefault",
   props: {
     content: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   computed: {
     getSlots() {
-      return this.content.slots || []
+      return this.content.slots || [];
     },
     getContent() {
-      return this.getSlots.length && this.getSlots[0]
-    },
-  },
-}
+      return this.getSlots.length && this.getSlots[0];
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../settings.scss';
+@import "../settings.scss";
 
 .cms-block-default {
   @include desktop-size;

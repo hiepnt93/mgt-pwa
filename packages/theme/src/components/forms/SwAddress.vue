@@ -105,7 +105,6 @@
         @blur="$v.form.country.$touch()"
         required
         class="sf-select--underlined form__element form__element--half form__element--half-even form__select"
-
       >
         <SfSelectOption
           v-for="countryOption in getMappedCountries"
@@ -139,9 +138,9 @@
 </template>
 
 <script>
-import { validationMixin } from 'vuelidate'
-import { required } from 'vuelidate/lib/validators'
-import { computed, reactive, ref, onBeforeMount } from '@vue/composition-api'
+import { validationMixin } from "vuelidate";
+import { required } from "vuelidate/lib/validators";
+import { computed, reactive, ref, onBeforeMount } from "@vue/composition-api";
 import {
   SfAlert,
   SfTabs,
@@ -149,55 +148,55 @@ import {
   SfButton,
   SfSelect,
   SfIcon
-} from '@storefront-ui/vue'
+} from "@storefront-ui/vue";
 import {
   useCountries,
   useUser,
   useSalutations
-} from '@shopware-pwa/composables'
-import { mapCountries, mapSalutations } from '@shopware-pwa/helpers'
+} from "@shopware-pwa/composables";
+import { mapCountries, mapSalutations } from "@shopware-pwa/helpers";
 
 export default {
-  name: 'SwAddress',
+  name: "SwAddress",
   components: { SfAlert, SfTabs, SfInput, SfButton, SfSelect, SfIcon },
   mixins: [validationMixin],
   props: {
     address: {
       type: Object,
       default: () => ({
-        firstName: '',
-        lastName: '',
+        firstName: "",
+        lastName: "",
         salutation: null,
         country: null,
-        zipcode: '',
-        street: '',
-        apartment: '',
-        city: '',
-        phoneNumber: ''
+        zipcode: "",
+        street: "",
+        apartment: "",
+        city: "",
+        phoneNumber: ""
       })
     }
   },
   setup(props) {
-    const { getSalutations, error: salutationsError } = useSalutations()
-    const { addAddress, error: userError } = useUser()
-    const { getCountries, error: countriesError } = useCountries()
-    const editAddress = ref(false)
-    const editedAddress = ref(-1)
-    const form = reactive(JSON.parse(JSON.stringify(props.address)))
+    const { getSalutations, error: salutationsError } = useSalutations();
+    const { addAddress, error: userError } = useUser();
+    const { getCountries, error: countriesError } = useCountries();
+    const editAddress = ref(false);
+    const editedAddress = ref(-1);
+    const form = reactive(JSON.parse(JSON.stringify(props.address)));
 
-    const getMappedCountries = computed(() => mapCountries(getCountries.value))
+    const getMappedCountries = computed(() => mapCountries(getCountries.value));
     const getMappedSalutations = computed(() =>
       mapSalutations(getSalutations.value)
-    )
+    );
 
     form.salutation = {
       name: props.address.salutation.displayName,
       id: props.address.salutation.id
-    }
+    };
     form.country = {
       name: props.address.country.name,
       id: props.address.country.id
-    }
+    };
 
     return {
       addAddress,
@@ -206,7 +205,7 @@ export default {
       getMappedCountries,
       getMappedSalutations,
       form
-    }
+    };
   },
   computed: {
     getAddressParam() {
@@ -221,7 +220,7 @@ export default {
         country,
         phoneNumber,
         _uniqueIdentifier
-      } = this.form
+      } = this.form;
       return {
         id: _uniqueIdentifier,
         firstName,
@@ -233,20 +232,20 @@ export default {
         city,
         countryId: country.id,
         phoneNumber
-      }
+      };
     }
   },
   methods: {
     async updateAddress() {
-      this.$v.$touch()
+      this.$v.$touch();
       if (this.$v.$invalid) {
-        return
+        return;
       }
-      await this.addAddress(this.getAddressParam)
-      this.returnToAddresses()
+      await this.addAddress(this.getAddressParam);
+      this.returnToAddresses();
     },
     returnToAddresses() {
-      this.$router.push('/account/addresses')
+      this.$router.push("/account/addresses");
     }
   },
   validations: {
@@ -283,11 +282,11 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~@storefront-ui/vue/styles';
+@import "~@storefront-ui/vue/styles";
 
 .form {
   @include for-desktop {
